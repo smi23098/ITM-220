@@ -11,13 +11,13 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema studentdb
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `studentdb` DEFAULT CHARACTER SET utf8 ;
-USE `studentdb` ;
+CREATE SCHEMA IF NOT EXISTS `prophet` DEFAULT CHARACTER SET utf8 ;
+USE `prophet` ;
 
 -- -----------------------------------------------------
 -- Table `mydb`.`lookup`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `studentdb`.`lookup` (
+CREATE TABLE IF NOT EXISTS `prophet`.`lookup` (
   `lookup_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `table_name` VARCHAR(45) NOT NULL,
   `column_name` VARCHAR(45) NOT NULL,
@@ -32,7 +32,7 @@ ENGINE = InnoDB AUTO_INCREMENT=1001;
 -- -----------------------------------------------------
 -- Table `mydb`.`member`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `studentdb`.`member` (
+CREATE TABLE IF NOT EXISTS `prophet`.`member` (
   `member_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `lookup_id` INT UNSIGNED NOT NULL,
   `member_number` VARCHAR(13) NOT NULL,
@@ -53,7 +53,7 @@ ENGINE = InnoDB AUTO_INCREMENT=1001;
 -- -----------------------------------------------------
 -- Table `mydb`.`apostle`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `studentdb`.`apostle` (
+CREATE TABLE IF NOT EXISTS `prophet`.`apostle` (
   `apostle_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `member_id` INT UNSIGNED NOT NULL,
   `start_date` DATE NOT NULL,
@@ -71,7 +71,7 @@ ENGINE = InnoDB AUTO_INCREMENT=1001;
 -- -----------------------------------------------------
 -- Table `mydb`.`prophet`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `studentdb`.`prophet` (
+CREATE TABLE IF NOT EXISTS `prophet`.`prophet` (
   `prophet_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `apostle_id` INT UNSIGNED NOT NULL,
   `start_date` DATE NOT NULL,
@@ -89,3 +89,5 @@ ENGINE = InnoDB AUTO_INCREMENT=1001;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+

@@ -1,4 +1,4 @@
-use `studentdb`;
+use `prophet`;
 
 -- Remove table before creating it again.
 DROP TABLE IF EXISTS prophet;
@@ -37,13 +37,16 @@ VALUES
 (15, 'Hinkley', 'Gordon', 'B'), 
 (16, 'Monson', 'Thomas', 'S'),
 (17, 'Nelson', 'Russell', 'M');
+
+
 -- Lets verify the data.
 SELECT prophet_id
 ,		prophet_number
 ,      last_name
 ,      first_name
 ,      IFNULL(middle_name,'') AS middle_name
- FROM prophet;
+ FROM prophet
+ ORDER BY prophet_number;
  
  -- Lets verify the data.
 SELECT prophet_id
@@ -53,3 +56,16 @@ SELECT prophet_id
 ,      IFNULL(middle_name,'') AS middle_name
  FROM prophet
  WHERE middle_name IS NOT NULL;
+ 
+ CREATE TABLE prophet.prophet_bu AS
+ SELECT*FROM prophet.prophet;
+ 
+ SELECT prophet_id
+,		prophet_number
+,      last_name
+,      first_name
+,      IFNULL(middle_name,'') AS middle_name
+ FROM prophet.prophet_bu
+ ORDER BY prophet_number;
+ 
+ 
