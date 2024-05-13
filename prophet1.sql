@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 -- ------------------------------------------------------------
 --  This conditionally drops all tables from only the prophet
 --  database to avoid conflicts with the studentdb database.
@@ -29,12 +30,24 @@ DROP TABLE IF EXISTS prophet.lookup, prophet.member, prophet.apostle, prophet.pr
 -- Create table.
 CREATE TABLE prophet.prophet
 ( prophet_id    int unsigned primary key auto_increment
+=======
+use `prophet`;
+
+-- Remove table before creating it again.
+DROP TABLE IF EXISTS prophet;
+
+-- Create table.
+CREATE TABLE prophet
+( prophet_id    int unsigned primary key auto_increment
+, prophet_number	int unsigned not null
+>>>>>>> bfd5dd06a287484f60d1ebce172aeecf84150d90
 , first_name    varchar(12)  not null
 , middle_name   varchar(12)
 , last_name     varchar(12)  not null )
 AUTO_INCREMENT=1001;
 
 -- Insert data into table.
+<<<<<<< HEAD
 INSERT INTO prophet.prophet
 ( last_name
 , first_name )
@@ -189,3 +202,61 @@ FROM    prophet.prophet
 WHERE   (prophet_id, last_name, first_name, middle_name, prophet_number) NOT IN
  (SELECT prophet_id, last_name, first_name, middle_name, prophet_number
   FROM    prophet.prophet_bu);
+=======
+INSERT INTO prophet
+( 
+  prophet_number
+, last_name
+, first_name
+, middle_name )
+VALUES
+(1, 'Smith', 'Joseph', ''), 
+(2, 'Young', 'Brigham', ''), 
+(3, 'Taylor', 'John', ''), 
+(4, 'Woodruff', 'Wilford', ''), 
+(5, 'Snow', 'Lorenzo', ''), 
+(6, 'Smith', 'Joseph', 'F'), 
+(7, 'Grant', 'Heber', 'J'), 
+(8, 'Smith', 'George', 'Albert'), 
+(9, 'Mckay', 'David', 'O'), 
+(10, 'Smith', 'Joseph', 'Feilding'),
+(11, 'Lee', 'Halold', 'B'), 
+(12, 'Kimball', 'Spencer', 'W'), 
+(13, 'Benson', 'Ezra', 'Taft'), 
+(14, 'Hunter', 'Howard', 'W'), 
+(15, 'Hinkley', 'Gordon', 'B'), 
+(16, 'Monson', 'Thomas', 'S'),
+(17, 'Nelson', 'Russell', 'M');
+
+
+-- Lets verify the data.
+SELECT prophet_id
+,		prophet_number
+,      last_name
+,      first_name
+,      IFNULL(middle_name,'') AS middle_name
+ FROM prophet
+ ORDER BY prophet_number;
+ 
+ -- Lets verify the data.
+SELECT prophet_id
+,		prophet_number
+,      last_name
+,      first_name
+,      IFNULL(middle_name,'') AS middle_name
+ FROM prophet
+ WHERE middle_name IS NOT NULL;
+ 
+ CREATE TABLE prophet.prophet_bu AS
+ SELECT*FROM prophet.prophet;
+ 
+ SELECT prophet_id
+,		prophet_number
+,      last_name
+,      first_name
+,      IFNULL(middle_name,'') AS middle_name
+ FROM prophet.prophet_bu
+ ORDER BY prophet_number;
+ 
+ 
+>>>>>>> bfd5dd06a287484f60d1ebce172aeecf84150d90

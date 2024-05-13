@@ -1,18 +1,35 @@
 -- MySQL Workbench Forward Engineering
+<<<<<<< HEAD
+=======
+
+>>>>>>> bfd5dd06a287484f60d1ebce172aeecf84150d90
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
+<<<<<<< HEAD
 -- Schema prophet 
+=======
+-- Schema studentdb
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema studentdb
+>>>>>>> bfd5dd06a287484f60d1ebce172aeecf84150d90
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `prophet` DEFAULT CHARACTER SET utf8 ;
 USE `prophet` ;
 
 -- -----------------------------------------------------
+<<<<<<< HEAD
 -- Table `prophet`.`lookup`
 -- -----------------------------------------------------
 SELECT 'CREATE lookup';
+=======
+-- Table `mydb`.`lookup`
+-- -----------------------------------------------------
+>>>>>>> bfd5dd06a287484f60d1ebce172aeecf84150d90
 CREATE TABLE IF NOT EXISTS `prophet`.`lookup` (
   `lookup_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `table_name` VARCHAR(45) NOT NULL,
@@ -24,10 +41,17 @@ CREATE TABLE IF NOT EXISTS `prophet`.`lookup` (
   INDEX `lookup_nk` (`table_name` ASC, `column_name` ASC, `lang` ASC, `type_name` ASC) VISIBLE)
 ENGINE = InnoDB AUTO_INCREMENT=1001;
 
+<<<<<<< HEAD
 -- -----------------------------------------------------
 -- Table `prophet`.`member`
 -- -----------------------------------------------------
 SELECT 'CREATE member';
+=======
+
+-- -----------------------------------------------------
+-- Table `mydb`.`member`
+-- -----------------------------------------------------
+>>>>>>> bfd5dd06a287484f60d1ebce172aeecf84150d90
 CREATE TABLE IF NOT EXISTS `prophet`.`member` (
   `member_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `lookup_id` INT UNSIGNED NOT NULL,
@@ -40,15 +64,26 @@ CREATE TABLE IF NOT EXISTS `prophet`.`member` (
   INDEX `member_fk1_idx` (`lookup_id` ASC) VISIBLE,
   CONSTRAINT `member_fk1`
     FOREIGN KEY (`lookup_id`)
+<<<<<<< HEAD
     REFERENCES `prophet`.`lookup` (`lookup_id`)
+=======
+    REFERENCES `mydb`.`lookup` (`lookup_id`)
+>>>>>>> bfd5dd06a287484f60d1ebce172aeecf84150d90
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB AUTO_INCREMENT=1001;
 
+<<<<<<< HEAD
 -- -----------------------------------------------------
 -- Table `prophet`.`apostle`
 -- -----------------------------------------------------
 SELECT 'CREATE apostle';
+=======
+
+-- -----------------------------------------------------
+-- Table `mydb`.`apostle`
+-- -----------------------------------------------------
+>>>>>>> bfd5dd06a287484f60d1ebce172aeecf84150d90
 CREATE TABLE IF NOT EXISTS `prophet`.`apostle` (
   `apostle_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `member_id` INT UNSIGNED NOT NULL,
@@ -58,15 +93,26 @@ CREATE TABLE IF NOT EXISTS `prophet`.`apostle` (
   INDEX `apostle_id_idx` (`member_id` ASC) VISIBLE,
   CONSTRAINT `apostle_fk1`
     FOREIGN KEY (`member_id`)
+<<<<<<< HEAD
     REFERENCES `prophet`.`member` (`member_id`)
+=======
+    REFERENCES `mydb`.`member` (`member_id`)
+>>>>>>> bfd5dd06a287484f60d1ebce172aeecf84150d90
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB AUTO_INCREMENT=1001;
 
+<<<<<<< HEAD
 -- -----------------------------------------------------
 -- Table `prophet`.`prophet`
 -- -----------------------------------------------------
 SELECT 'CREATE prophet';
+=======
+
+-- -----------------------------------------------------
+-- Table `mydb`.`prophet`
+-- -----------------------------------------------------
+>>>>>>> bfd5dd06a287484f60d1ebce172aeecf84150d90
 CREATE TABLE IF NOT EXISTS `prophet`.`prophet` (
   `prophet_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `apostle_id` INT UNSIGNED NOT NULL,
@@ -76,16 +122,25 @@ CREATE TABLE IF NOT EXISTS `prophet`.`prophet` (
   INDEX `prophet_fk1_idx` (`apostle_id` ASC) VISIBLE,
   CONSTRAINT `prophet_fk1`
     FOREIGN KEY (`apostle_id`)
+<<<<<<< HEAD
     REFERENCES `prophet`.`apostle` (`apostle_id`)
+=======
+    REFERENCES `mydb`.`apostle` (`apostle_id`)
+>>>>>>> bfd5dd06a287484f60d1ebce172aeecf84150d90
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB AUTO_INCREMENT=1001;
 
+<<<<<<< HEAD
 -- Cleanup environment.
+=======
+
+>>>>>>> bfd5dd06a287484f60d1ebce172aeecf84150d90
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
+<<<<<<< HEAD
 -- Show tables.
 SHOW TABLES;
 
@@ -190,3 +245,6 @@ VALUES
 ,'1844-06-27');
 
 -- Enter the rest prophet entries here.
+=======
+
+>>>>>>> bfd5dd06a287484f60d1ebce172aeecf84150d90
