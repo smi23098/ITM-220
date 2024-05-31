@@ -71,6 +71,7 @@ ENGINE = InnoDB AUTO_INCREMENT=1001;
 -- -----------------------------------------------------
 -- Table `mydb`.`prophet`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS prophet;
 CREATE TABLE IF NOT EXISTS `prophet`.`prophet` (
   `prophet_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `apostle_id` INT UNSIGNED NOT NULL,
