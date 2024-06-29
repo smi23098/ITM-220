@@ -24,5 +24,3 @@ INSERT INTO zip_code (zip_code) VALUES
     ("84044"), -- Salt Lake
     ("84321"); -- Logan
     
-INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, state_id) VALUES
-	(1,'121','Blazing Trail Dr.',200,1,1), (3,134,'2nd E',459,2,1), (3,180,'5th W',890,2,1);
