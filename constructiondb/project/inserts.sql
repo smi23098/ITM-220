@@ -8,7 +8,8 @@ INSERT INTO state (state_name, state_code) VALUES
 	("Utah", "UT");
     
 INSERT INTO city (city_name) VALUES
-	("Boise"),
+	("Middleton"),
+    ("Boise"),
     ("Rexburg"),
     ("Salt Lake City"),
     ("Logan"),
@@ -23,5 +24,3 @@ INSERT INTO zip_code (zip_code) VALUES
     ("84044"), -- Salt Lake
     ("84321"); -- Logan
     
-INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, state_id) VALUES
-	();
