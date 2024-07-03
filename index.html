@@ -4,30 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Final Project</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts/toggle.js" defer></script>
 </head>
 <body>
     <div class="form-toggles">
         <h1>Form Sections</h1>
         <ul>
-            <li>Address</li>
-            <li>Contractor</li>
-            <li>Project</li>
-            <li>Insurance</li>
+            <li><button id="address-btn">Address</button></li>
+            <li><button id="contractor-btn">Contractor</button></li>
+            <li><button id="project-btn">Project</button></li>
+            <li><button id="insurance-btn">Insurance</button></li>
         </ul>
     </div>
-    <section>
+    <section id="address-section" hidden> 
         <h2>Address Forms</h2>
     </section>
-    <section>
-        <h2>Address Forms</h2>
-    </section>
-    <section>
+    <section id="contractor-section" hidden>
         <h2>Contractor Forms</h2>
     </section>
-    <section>
+    <section id="project-section" hidden>
         <h2>Project Forms</h2>
     </section>
-    <section>
+    <section id="insurance-section" hidden>
         <h2>Insurance Forms</h2>
     </section>
 </body>
