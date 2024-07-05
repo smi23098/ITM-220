@@ -17,17 +17,63 @@
             <li><button id="insurance-btn">Insurance</button></li>
         </ul>
     </div>
-    <section id="address-section" hidden> 
-        <h2>Address Forms</h2>
-    </section>
     <section id="contractor-section" hidden>
-        <h2>Contractor Forms</h2>
+        <h2>Subontractor Forms</h2>
+        <form>
+            <fieldset>
+                <legend>Subcontractor Information</legend>
+                <label for="subcontractor_name"></label>
+                <input type="text" name="subcontractor_name" id="subcontractor_name" maxlength="45">
+            </fieldset>
+            <fieldset>
+                <legend>Address</legend>
+                
+            </fieldset>
+            <fieldset>
+                <legend>Insurance Information</legend>
+                <label for="">Insurance Company: </label>
+                <input type="text" name="" id="">
+                <label for="">Insurance Type: </label>
+                <input type="text" name="" id="">
+                <label for="insurance-type"></label>
+                <input name="insurance-type" id="insurance-type" list="insurance-type-list" maxlength="45"></input>
+                <datalist id="insurance-type-list">
+                    <option value="General Liability Insurance"></option>
+                    <option value="Workers' Compensation Insurance"></option>
+                    <option value="Commercial Auto Insurance"></option>
+                    <option value="Builder's Risk Insurance"></option>
+                    <option value="Contractor's Equipment Insurance"></option>
+                    <option value="Professional Liability Insurance"></option>
+                    <option value="Pollution Liability Insurance"></option>
+                    <option value="Umbrella Insurance"></option>
+                    <option value="Property Insurance"></option>
+                    <option value="Business Interruption Insurance"></option>
+                    <option value="Inland Marine Insurance"></option>
+                    <option value="Surety Bonds"></option>
+                    <option value="Employment Practices Liability Insurance"></option>
+                    <option value="Cyber Liability Insurance"></option>
+                    <option value="Completed Operations Insurance"></option>
+                    <option value="Installation Floater Insurance"></option>
+                    <option value="Errors and Omissions Insurance"></option>
+                    <option value="Directors and Officers Insurance"></option>
+                    <option value="Commercial Crime Insurance"></option>
+                    <option value="Fidelity Bond/Employee Dishonesty Insurance"></option>
+                </datalist>
+                <label for="experation-date">Experation Date: </label>
+                <input type="date" name="experation-date" id="experation-date">
+                
+            </fieldset>
+        </form>
     </section>
     <section id="project-section" hidden>
         <h2>Project Forms</h2>
     </section>
     <section id="insurance-section" hidden>
         <h2>Insurance Forms</h2>
+        
+    </section>
+    <section id="address-section" hidden> 
+        <h2>Address Forms</h2>
     </section>
 </body>
 </html>

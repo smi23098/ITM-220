@@ -1,6 +1,6 @@
 .DS_Store
 .Rhistory
-.vscode
+.vscode/
 
 # Ignore local system generated ERD editing tracker files
 *mwb.bak
