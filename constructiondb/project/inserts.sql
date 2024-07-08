@@ -23,7 +23,9 @@ INSERT INTO zip_code (zip_code) VALUES
     ("96720"), -- Hilo
     ("84044"), -- Salt Lake
     ("84321"); -- Logan
-    
+
+
+
 INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, state_id) VALUES
 	(
         (SELECT city_id FROM city WHERE city_name = "Middleton"),
@@ -33,19 +35,25 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
         (SELECT zip_code_id FROM city WHERE zip_code = "83644"),
         (SELECT state_id FROM state WHERE state_name = "Idaho")
     ), 
-    ((SELECT city_id FROM city WHERE city_name = "Salt Lake"),
+    (
+		(SELECT city_id FROM city WHERE city_name = "Salt Lake"),
         '300',
         'North Temple',
         1230,
         (SELECT zip_code_id FROM city WHERE zip_code = "84044"),
         (SELECT state_id FROM state WHERE state_name = "Utah")
-        ),
-	((SELECT city_id FROM city WHERE city_name = "Rexburg"),
-	'400',
-	'2nd East',
-	100,
-	(SELECT zip_code_id FROM city WHERE zip_code = "83440"),
-	(SELECT state_id FROM state WHERE state_name = "Idaho"));
+	),
+	(
+		(SELECT city_id FROM city WHERE city_name = "Rexburg"),
+		'400',
+		'2nd East',
+		100,
+		(SELECT zip_code_id FROM city WHERE zip_code = "83440"),
+		(SELECT state_id FROM state WHERE state_name = "Idaho")
+    );
+    
+    
+    
     
     INSERT INTO insurance_company (company_name, address_id) VALUES
 		(
