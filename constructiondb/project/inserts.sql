@@ -3,9 +3,9 @@ USE constructiondb;
 -- Outer Tables
 
 INSERT INTO state (state_name, state_code) VALUES
-	("Idaho", "ID"),
+	("Idaho",  "ID"),
 	("Hawaii", "HI"),
-	("Utah", "UT");
+	("Utah",   "UT");
     
 INSERT INTO city (city_name) VALUES
 	("Middleton"),
@@ -55,27 +55,53 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
     
     
     
-    INSERT INTO insurance_company (company_name, address_id) VALUES
-		(
-			"Liberty Mutual",
-            (SELECT address_id FROM address WHERE street_num = "121"
-            AND street_name = "Blazing Trail Dr."
-            AND unit_num = "200")
-        ),
-        (
-			"CNA Insurance",(SELECT address_id FROM address WHERE street_num = "300"
-            AND street_name = "North Temple"
-            AND unit_num = "1230")
-        ),
-        (
-			"Zurich North America",(SELECT address_id FROM address WHERE street_num = "400"
-            AND street_name = "2nd East"
-            AND unit_num = "100")
-        );
-	INSERT INTO insurance_type(type_name) VALUES
+INSERT INTO insurance_company (company_name, address_id) VALUES
+	(
+		"Liberty Mutual",
+		(SELECT address_id FROM address WHERE street_num = "121"
+		AND street_name = "Blazing Trail Dr."
+		AND unit_num = "200")
+	),
+	(
+		"CNA Insurance",
+		(SELECT address_id FROM address WHERE street_num = "300"
+		AND street_name = "North Temple"
+		AND unit_num = "1230")
+	),
+	(
+		"Zurich North America",
+		(SELECT address_id FROM address WHERE street_num = "400"
+		AND street_name = "2nd East"
+		AND unit_num = "100")
+	);
+INSERT INTO insurance_type(type_name) VALUES
     ("General Liability"),("Workers Liability"),("Property Insurance");
     
-    INSERT INTO insurance (insurance_id, exp_date, subcontractor_id, insurance_company_id, insurance_type_id) VALUES
-    (
+INSERT INTO subcontractor(name) VALUES
+    ('Fazbear Construction'),('Diamond Planks'),("Joe's construction"),("Jim's construction");
     
+INSERT INTO insurance (exp_date, subcontractor_id, insurance_company_id, insurance_type_id) VALUES
+    (
+		'2020-1-20',
+        (SELECT subcontractor_id FROM subcontractor s WHERE s.name = 'Fazbear Construction'),
+        (SELECT company_name FROM insurance_company ic WHERE ic.company_name = 'CNA Insurance'),
+        (SELECT type_name FROM insurance_type i WHERE i.type_name = 'General Liability')
+    ),
+    (
+		'2024-12-20',
+        (SELECT subcontractor_id FROM subcontractor s WHERE s.name = 'Diamond Planks'),
+        (SELECT company_name FROM insurance_company ic WHERE ic.company_name = 'Zurich North America'),
+        (SELECT type_name FROM insurance_type i WHERE i.type_name = 'Property Insurance')
+    ),
+    (
+		'2026-1-1',
+        (SELECT subcontractor_id FROM subcontractor s WHERE s.name = "Joe's construction"),
+        (SELECT company_name FROM insurance_company ic WHERE ic.company_name = 'Liberty Mutual'),
+        (SELECT type_name FROM insurance_type i WHERE i.type_name = 'Workers Liability')
+    ),
+    (
+		'2025-8-5',
+        (SELECT subcontractor_id FROM subcontractor s WHERE s.name = "Jim's construction"),
+        (SELECT company_name FROM insurance_company ic WHERE ic.company_name = 'Liberty Mutual'),
+        (SELECT type_name FROM insurance_type i WHERE i.type_name = 'General Liability')
     );
