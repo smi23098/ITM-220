@@ -1,5 +1,15 @@
+ul {
+    padding: 0;
+    display: flex;
+    overflow: scroll;
+}
+li {
+    list-style-type: none;
+}
+
 label {
     display: block;
+    margin-top: 10px;
 }
 
 th, td {
@@ -8,3 +18,17 @@ th, td {
     text-align: center;
     width: 200px;
 }
+
+@media screen and (min-width: 600px) {
+    fieldset {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    
+    label {
+        display: inline;
+        text-align: right;
+        margin-right: 10px;
+    }
+}
+
