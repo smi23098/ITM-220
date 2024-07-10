@@ -15,21 +15,23 @@
             <li><button id="contractor-btn">Contractor</button></li>
             <li><button id="project-btn">Project</button></li>
             <li><button id="insurance-btn">Insurance</button></li>
+            <li><button id="contractor-project-btn">Contractor Project</button></li>
+            <li><button id="contractor-insurance-btn">Contractor Insurance</button></li>
         </ul>
     </div>
     <section id="contractor-section" hidden>
         <h2>Subontractor Forms</h2>
         <form>
             <fieldset>
-                <legend>Subcontractor Information</legend>
-                <label for="subcontractor_name">Company Name: </label>
+                <legend data-table="subcontractor">Subcontractor Information</legend>
+                <label for="subcontractor_name" data-table="subcontractor" data-column="subcontractor_name">Company Name: </label>
                 <input type="text" name="subcontractor_name" id="subcontractor_name" maxlength="45">
             </fieldset>
             <fieldset class="address-fieldset">
                 <legend data-table="subcontractor_address" data-foreign="address_id">Address</legend>
-                <label for="address-start" data-table="" data-column="subcontractor_address" data-foreign="addr_start"></label>
+                <label for="address-start" data-table="subcontractor_address" data-column="addr_start">Address Start:</label>
                 <input type="date" name="address-start" id="address-start" required>
-                <label for="address-end" data-table="subcontractor_address" data-column="addr_end"></label>
+                <label for="address-end" data-table="subcontractor_address" data-column="addr_end">Address End:</label>
                 <input type="date" name="address-end" id="address-end" required>
             </fieldset>
             <input type="submit" value="Submit">
@@ -91,6 +93,29 @@
             <input type="submit" value="Submit">
         </form>
     </section>
+
+    <section id="contractor-project-section" hidden>
+        <h2>Subcontractor Project Forms</h2>
+        <form>
+            <fieldset>
+
+            </fieldset>
+
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+
+    <section id="contractor-insurance-section" hidden>
+        <h2>Subcontractor Insurance Forms</h2>
+        <form>
+            <fieldset>
+
+            </fieldset>
+
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+
     
     <div id="mysql-info">
         <!-- This div will be loaded dynamically with a table -->
