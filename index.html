@@ -23,7 +23,7 @@
         <h2>Subontractor Forms</h2>
         <form>
             <fieldset>
-                <legend data-table="subcontractor">Subcontractor Information</legend>
+                <legend data-table="subcontractor" data-column="subcontractor_id" data-foreign="subcontractor_id">Subcontractor Information</legend>
                 <label for="subcontractor_name" data-table="subcontractor" data-column="subcontractor_name">Company Name: </label>
                 <input type="text" name="subcontractor_name" id="subcontractor_name" maxlength="45">
             </fieldset>
@@ -56,8 +56,8 @@
         <form>
             <fieldset>
                 <legend>Insurance Information</legend>
-                <label for="">Insurance Company: </label>
-                <input type="text" name="" id="">
+                <label for="insurance-company">Insurance Company: </label>
+                <input type="text" name="insurance-company" id="insurance-company">
                 <label for="insurance-type">Insurance Type: </label>
                 <input name="insurance-type" id="insurance-type" list="insurance-type-list" maxlength="45"></input>
                 <datalist id="insurance-type-list">
