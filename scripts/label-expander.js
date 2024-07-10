@@ -19,7 +19,7 @@ function addFieldset(form) {
 }
 
 function initListeners() {
-    document.querySelectorAll('label').forEach(activator => activator.addEventListener('click', showInfo));
+    document.querySelectorAll('label, legend').forEach(activator => activator.addEventListener('click', showInfo));
 };
 
 const infoTable = document.getElementById("mysql-info");
@@ -39,8 +39,8 @@ function showInfo(event) {
             </thead>
             <tbody>
                 <tr>
-                    <td>${event.target.getAttribute('data-table')}</td>
-                    <td>${event.target.getAttribute('data-column')}</td>
+                    <td>${event.target.getAttribute('data-table') ??  ""}</td>
+                    <td>${event.target.getAttribute('data-column') ??  ""}</td>
                     <td>${event.target.getAttribute('data-foreign') ??  ""}</td>
                 </tr>
             </tbody>
