@@ -55,6 +55,8 @@ INSERT INTO state (state_name, state_code) VALUES
     ("Wyoming", "WY");
     
 INSERT INTO city (city_name) VALUES
+	("Birmingham"),
+	("Schuamburg"),
     ("Middleton"),
     ("Boise"),
     ("Rexburg"),
@@ -111,6 +113,8 @@ INSERT INTO city (city_name) VALUES
     ("Cheyenne");
     
 INSERT INTO zip_code (zip_code) VALUES
+	("60196"),   -- Schuamburg
+    ("35242"),   -- Birmingham
     ("83644"),   -- Middleton
     ("83440"),   -- Rexburg
     ("96795"),   -- Honolulu
@@ -135,7 +139,8 @@ INSERT INTO zip_code (zip_code) VALUES
     ("70801"),   -- Baton Rouge
     ("04330"),   -- Augusta
     ("21401"),   -- Annapolis
-    ("02101"),   -- Boston
+    ("02101"),	 -- Boston
+    ("02116"),   -- Boston
     ("48901"),   -- Lansing
     ("55101"),   -- St. Paul
     ("39201"),   -- Jackson
@@ -167,28 +172,28 @@ INSERT INTO zip_code (zip_code) VALUES
 
 INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, state_id) VALUES
 	(
-        (SELECT city_id FROM city WHERE city_name = "Middleton"),
-        '121',
-        'Blazing Trail Dr.',
+        (SELECT city_id FROM city WHERE city_name = "Boston"),
+        '175',
+        'Berkeley Street',
         200,
-        (SELECT zip_code_id FROM city WHERE zip_code = "83644"),
-        (SELECT state_id FROM state WHERE state_name = "Idaho")
+        (SELECT zip_code_id FROM city WHERE zip_code = "02116"),
+        (SELECT state_id FROM state WHERE state_name = "Massachusetts")
     ), 
     (
-		(SELECT city_id FROM city WHERE city_name = "Salt Lake"),
-        '300',
-        'North Temple',
-        1230,
-        (SELECT zip_code_id FROM city WHERE zip_code = "84044"),
-        (SELECT state_id FROM state WHERE state_name = "Utah")
+		(SELECT city_id FROM city WHERE city_name = "Birmingham"),
+        '130',
+        'Inverness Plaza',
+        273,
+        (SELECT zip_code_id FROM city WHERE zip_code = "35242"),
+        (SELECT state_id FROM state WHERE state_name = "Alabama")
 	),
 	(
-		(SELECT city_id FROM city WHERE city_name = "Rexburg"),
-		'400',
-		'2nd East',
+		(SELECT city_id FROM city WHERE city_name = "Schuamburg"),
+		'1299',
+		'Zurich Way ZAIC',
 		100,
-		(SELECT zip_code_id FROM city WHERE zip_code = "83440"),
-		(SELECT state_id FROM state WHERE state_name = "Idaho")
+		(SELECT zip_code_id FROM city WHERE zip_code = "60196"),
+		(SELECT state_id FROM state WHERE state_name = "Illinois")
     );
     
     
@@ -198,20 +203,20 @@ INSERT INTO insurance_company (company_name, address_id) VALUES
 	(
 		"Liberty Mutual",
 		(SELECT address_id FROM address WHERE street_num = "175"
-		AND street_name = "Berkeley Street" -- need to add corrisponding address to address table
+		AND street_name = "Berkeley Street" 
 		AND unit_num = "200")
             
 	),
 	(
 		"CNA Insurance",
 		(SELECT address_id FROM address WHERE street_num = "130"
-		AND street_name = "Inverness Plaza" -- need to add corrisponding address to address table
+		AND street_name = "Inverness Plaza" 
 		AND unit_num = "273")
 	),
 	(
 		"Zurich North America",
 		(SELECT address_id FROM address WHERE street_num = "1299"
-		AND street_name = "Zurich Way ZAIC" -- need to add corrisponding address to address table
+		AND street_name = "Zurich Way ZAIC"
 		AND unit_num = "100")
 	);
 INSERT INTO insurance_type(type_name) VALUES
