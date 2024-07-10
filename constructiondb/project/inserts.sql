@@ -176,6 +176,18 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
         '175',
         'Berkeley Street',
         200,
+<<<<<<< HEAD
+        (SELECT zip_code_id FROM zip_code WHERE zip_code = "83644"),
+        (SELECT state_id FROM state WHERE state_name = "Idaho")
+    ), 
+    (
+		(SELECT city_id FROM city WHERE city_name = "Salt Lake"),
+        '300',
+        'North Temple',
+        1230,
+        (SELECT zip_code_id FROM zip_code WHERE zip_code = "84044"),
+        (SELECT state_id FROM state WHERE state_name = "Utah")
+=======
         (SELECT zip_code_id FROM city WHERE zip_code = "02116"),
         (SELECT state_id FROM state WHERE state_name = "Massachusetts")
     ), 
@@ -186,15 +198,47 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
         273,
         (SELECT zip_code_id FROM city WHERE zip_code = "35242"),
         (SELECT state_id FROM state WHERE state_name = "Alabama")
+>>>>>>> 61672053201ae78b2c3473b151dde21f99fefb75
 	),
 	(
 		(SELECT city_id FROM city WHERE city_name = "Schuamburg"),
 		'1299',
 		'Zurich Way ZAIC',
 		100,
+<<<<<<< HEAD
+		(SELECT zip_code_id FROM zip_code WHERE zip_code = "83440"),
+		(SELECT state_id FROM state WHERE state_name = "Idaho")
+    ),
+    (
+		(SELECT city_id FROM city WHERE city_name = "Logan"),
+		'250',
+		'1st Street',
+		500,
+		(SELECT zip_code_id FROM zip_code WHERE zip_code = "84321"),
+		(SELECT state_id FROM state WHERE state_name = "Utah")
+    ),
+    ( -- 
+		(SELECT city_id FROM city WHERE city_name = "Hilo"),
+		'500',
+		'10th Street',
+		600,
+		(SELECT zip_code_id FROM zip_code WHERE zip_code = "Hilo"),
+		(SELECT state_id FROM state WHERE state_name = "Hawaii")
+    ),
+    (
+		(SELECT city_id FROM city WHERE city_name = "Phoenix"),
+		'300',
+		'15th Street',
+		800,
+		(SELECT zip_code_id FROM zip_code WHERE zip_code = "85001"),
+		(SELECT state_id FROM state WHERE state_name = "Arizona")
+    )
+    ;
+=======
 		(SELECT zip_code_id FROM city WHERE zip_code = "60196"),
 		(SELECT state_id FROM state WHERE state_name = "Illinois")
     );
+>>>>>>> 61672053201ae78b2c3473b151dde21f99fefb75
     
     
     
@@ -250,3 +294,7 @@ INSERT INTO insurance (exp_date, subcontractor_id, insurance_company_id, insuran
         (SELECT company_name FROM insurance_company ic WHERE ic.company_name = 'Liberty Mutual'),
         (SELECT type_name FROM insurance_type i WHERE i.type_name = 'General Liability')
     );
+    INSERT INTO project(project_name, address_id, start_date, end_date)
+    VALUES ("Smith Residence",(SELECT address_id FROM address WHERE street_num = "250" AND street_name = "1st Street"AND unit_num = "500"),"2024-01-01","2024-05-02"),
+    ("Community Golf Course",(SELECT address_id FROM address WHERE street_num = "500" AND street_name = "10th Street"AND unit_num = "600"),"2024-05-05","2024-07-10"),
+    ("Smith Residence",(SELECT address_id FROM address WHERE street_num = "300" AND street_name = "15th Street"AND unit_num = "800"),"2024-02-02","2024-04-20");
