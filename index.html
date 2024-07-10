@@ -26,8 +26,11 @@
                 <input type="text" name="subcontractor_name" id="subcontractor_name" maxlength="45">
             </fieldset>
             <fieldset class="address-fieldset">
-                <legend>Address</legend>
-
+                <legend data-table="subcontractor_address" data-foreign="address_id">Address</legend>
+                <label for="address-start" data-table="" data-column="subcontractor_address" data-foreign="addr_start"></label>
+                <input type="date" name="address-start" id="address-start" required>
+                <label for="address-end" data-table="subcontractor_address" data-column="addr_end"></label>
+                <input type="date" name="address-end" id="address-end" required>
             </fieldset>
             <input type="submit" value="Submit">
         </form>
@@ -40,7 +43,7 @@
 
             </fieldset>
             <fieldset class="address-fieldset">
-                <legend>Address</legend>
+                <legend data-table="project" data-foreign="address_id">Address</legend>
 
             </fieldset>
             <input type="submit" value="Submit">
@@ -82,14 +85,15 @@
                 
             </fieldset>
             <fieldset class="address-fieldset">
-                <legend>Address</legend>
+                <legend data-table="insurance_company" data-foreign="address_id">Address</legend>
 
             </fieldset>
             <input type="submit" value="Submit">
         </form>
     </section>
+    
     <div id="mysql-info">
-        
+        <!-- This div will be loaded dynamically with a table -->
     </div>
 
     <datalist id="state-list">
@@ -144,6 +148,6 @@
         <option value="WI">Wisconsin</option>
         <option value="WY">Wyoming</option>
     </datalist>
-    
+    <!-- data-table="" data-column="" data-foreign="" -->
 </body>
 </html>
