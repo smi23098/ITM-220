@@ -118,7 +118,11 @@
         <h2>Project Template Forms</h2>
         <form>
             <fieldset>
-
+                <legend data-table="template" data-column="template_id">Template</legend>
+                <label for="unit-name" data-table="template" data-column="unit_name">Unit Name:</label>
+                <input type="text" name="unit-name" id="unit-name" maxlength="45">
+                <label for="unit-cost" data-table="template" data-column="unit_cost">Unit Cost:</label>
+                <input name="unit-cost" id="unit-cost" type="number" step="0.01" min="0" placeholder="0.00" />
             </fieldset>
 
             <input type="submit" value="Submit">
@@ -129,7 +133,8 @@
         <h2>Project Task Forms</h2>
         <form>
             <fieldset>
-
+                <legend>Task</legend>
+                <!-- task type needs pulled out to a second table or deleted? -->
             </fieldset>
 
             <input type="submit" value="Submit">
