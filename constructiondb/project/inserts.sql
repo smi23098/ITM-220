@@ -314,13 +314,27 @@ INSERT INTO project(project_name, address_id, start_date, end_date) VALUES
 
 INSERT INTO template(unit_cost, unit_name, description) VALUES
 	(85.53, "3x7 door", "Three by seven foot door using red wood and a steel doorknob"),
-    (381.32, "12x9 wall", "12x9 steel and red wood wall");
+    (381.32, "12x9 wall", "12x9 steel and red wood wall"),
+    (200.12, "13x13 roof", "13x3 steel and rubber roof");
 
 
 
 INSERT INTO task(task_name, template_id, project_id) VALUES
-	("Smith residence front door",					(SELECT template_id FROM template WHERE unit_name = "3x7 door"),	(SELECT project_id FROM project)),
-    ("Smith residence north entrance north wall",	(SELECT template_id FROM template WHERE unit_name = "12x9 wall"),	(SELECT project_id FROM project));
+	(
+        "Smith residence front door",
+        (SELECT template_id FROM template WHERE unit_name = "3x7 door"),
+        (SELECT project_id FROM project WHERE project_name = "Smith Residence" AND start_date = "2024-01-01")
+    ),
+    (
+        "Golf Course Administration Building Roof",
+        (SELECT template_id FROM template WHERE unit_name = "13x13 roof"),
+        (SELECT project_id FROM project WHERE project_name = "Community Golf Course" AND start_date = "2024-05-05")
+    ),
+    (
+        "Smith residence north entrance north wall",
+        (SELECT template_id FROM template WHERE unit_name = "12x9 wall"),
+        (SELECT project_id FROM project WHERE project_name = "Smith Residence" AND start_date = "2024-02-02")
+    );
 
 
 
