@@ -60,7 +60,7 @@ DROP TABLE IF EXISTS `constructiondb`.`address` ;
 CREATE TABLE IF NOT EXISTS `constructiondb`.`address` (
   `address_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `city_id` INT UNSIGNED NOT NULL,
-  `street_num` INT NOT NULL,
+  `street_num` INT UNSIGNED NOT NULL,
   `street_name` VARCHAR(45) NOT NULL,
   `unit_num` VARCHAR(15) NULL,
   `zip_code_id` INT UNSIGNED NOT NULL,
@@ -109,6 +109,8 @@ CREATE TABLE IF NOT EXISTS `constructiondb`.`template` (
   `unit_cost` DECIMAL(8,2) UNSIGNED NOT NULL,
   `unit_name` VARCHAR(45) NOT NULL,
   `description` VARCHAR(45) NOT NULL,
+  `end_date` DATE NOT NULL,
+  `start_date` DATE NOT NULL,
   PRIMARY KEY (`template_id`))
 ENGINE = InnoDB;
 
@@ -141,7 +143,7 @@ DROP TABLE IF EXISTS `constructiondb`.`task` ;
 
 CREATE TABLE IF NOT EXISTS `constructiondb`.`task` (
   `task_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `task_name` VARCHAR(45) NOT NULL,
+  `task_type` VARCHAR(45) NOT NULL,
   `template_id` INT UNSIGNED NOT NULL,
   `project_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`task_id`),
@@ -194,7 +196,7 @@ CREATE TABLE IF NOT EXISTS `constructiondb`.`subcontractor_address` (
   `subcontractor_id` INT UNSIGNED NOT NULL,
   `address_id` INT UNSIGNED NOT NULL,
   `addr_start` DATE NOT NULL,
-  `addr_end` DATE NULL,
+  `addr_end` DATE NOT NULL,
   PRIMARY KEY (`subcontractor_id`, `address_id`),
   INDEX `fk_subcontractor_has_address_address1_idx` (`address_id` ASC) VISIBLE,
   INDEX `fk_subcontractor_has_address_subcontractor1_idx` (`subcontractor_id` ASC) VISIBLE,
