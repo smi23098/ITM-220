@@ -181,7 +181,7 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
         (SELECT city_id FROM city WHERE city_name = "Boston"),
         '175',
         'Berkeley Street',
-        200,
+        '200',
         (SELECT zip_code_id FROM city WHERE zip_code = "02116"),
         (SELECT state_id FROM state WHERE state_name = "Massachusetts")
     ), 
@@ -189,7 +189,7 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
         (SELECT city_id FROM city WHERE city_name = "Birmingham"),
         '130',
         'Inverness Plaza',
-        273,
+        '273',
         (SELECT zip_code_id FROM city WHERE zip_code = "35242"),
         (SELECT state_id FROM state WHERE state_name = "Alabama")
     ),
@@ -197,9 +197,65 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
         (SELECT city_id FROM city WHERE city_name = "Schuamburg"),
         '1299',
         'Zurich Way ZAIC',
-        100,
+        '100',
         (SELECT zip_code_id FROM city WHERE zip_code = "60196"),
         (SELECT state_id FROM state WHERE state_name = "Illinois")
+    ),
+    (
+        (SELECT city_id FROM city WHERE city_name = "Salem"),
+        '12357',
+        '10th Avenue',
+        '546',
+        (SELECT zip_code_id FROM city WHERE zip_code = "97301"),
+        (SELECT state_id FROM state WHERE state_name = "Oregon")
+    ),
+    (
+        (SELECT city_id FROM city WHERE city_name = "Cheyenne"),
+        '6798',
+        '3rd Street',
+        '78',
+        (SELECT zip_code_id FROM city WHERE zip_code = "82001"),
+        (SELECT state_id FROM state WHERE state_name = "Wyoming")
+    ),
+    (
+        (SELECT city_id FROM city WHERE city_name = "Oklahoma City"),
+        '780',
+        '10th Street',
+        '23',
+        (SELECT zip_code_id FROM city WHERE zip_code = "73101"),
+        (SELECT state_id FROM state WHERE state_name = "Oklahoma")
+    ),
+    (
+        (SELECT city_id FROM city WHERE city_name = "Concord"),
+        '345',
+        'Insurance Ave',
+        '12378',
+        (SELECT zip_code_id FROM city WHERE zip_code = "03301"),
+        (SELECT state_id FROM state WHERE state_name = "North Carolina")
+    ),
+    (
+        (SELECT city_id FROM city WHERE city_name = "Madison"),
+        '980',
+        'Construction Way',
+        '56',
+        (SELECT zip_code_id FROM city WHERE zip_code = "53701"),
+        (SELECT state_id FROM state WHERE state_name = "Wisconsin")
+    ),
+    (
+        (SELECT city_id FROM city WHERE city_name = "Charleston"),
+        '167',
+        'Build Street',
+        '45',
+        (SELECT zip_code_id FROM city WHERE zip_code = "25301"),
+        (SELECT state_id FROM state WHERE state_name = "West Virginia")
+    ),
+    (
+        (SELECT city_id FROM city WHERE city_name = "Austin"),
+        '897',
+        'Money Way',
+        '56',
+        (SELECT zip_code_id FROM city WHERE zip_code = "78701"),
+        (SELECT state_id FROM state WHERE state_name = "Texas")
     );
 
 
