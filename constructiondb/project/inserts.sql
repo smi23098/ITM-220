@@ -53,10 +53,12 @@ INSERT INTO state (state_name, state_code) VALUES
     ("West Virginia", "WV"),
     ("Wisconsin", "WI"),
     ("Wyoming", "WY");
-    
+
+
+
 INSERT INTO city (city_name) VALUES
-	("Birmingham"),
-	("Schuamburg"),
+    ("Birmingham"),
+    ("Schuamburg"),
     ("Middleton"),
     ("Boise"),
     ("Rexburg"),
@@ -111,9 +113,11 @@ INSERT INTO city (city_name) VALUES
     ("Charleston"),
     ("Madison"),
     ("Cheyenne");
-    
+
+
+
 INSERT INTO zip_code (zip_code) VALUES
-	("60196"),   -- Schuamburg
+    ("60196"),   -- Schuamburg
     ("35242"),   -- Birmingham
     ("83644"),   -- Middleton
     ("83440"),   -- Rexburg
@@ -170,8 +174,10 @@ INSERT INTO zip_code (zip_code) VALUES
     ("53701"),   -- Madison
     ("82001");   -- Cheyenne
 
+
+
 INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, state_id) VALUES
-	(
+    (
         (SELECT city_id FROM city WHERE city_name = "Boston"),
         '175',
         'Berkeley Street',
@@ -180,76 +186,70 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
         (SELECT state_id FROM state WHERE state_name = "Massachusetts")
     ), 
     (
-		(SELECT city_id FROM city WHERE city_name = "Birmingham"),
+        (SELECT city_id FROM city WHERE city_name = "Birmingham"),
         '130',
         'Inverness Plaza',
         273,
         (SELECT zip_code_id FROM city WHERE zip_code = "35242"),
         (SELECT state_id FROM state WHERE state_name = "Alabama")
-	  ),
-	  (
-		  (SELECT city_id FROM city WHERE city_name = "Schuamburg"),
-      '1299',
-      'Zurich Way ZAIC',
-      100,
-      (SELECT zip_code_id FROM city WHERE zip_code = "60196"),
-      (SELECT state_id FROM state WHERE state_name = "Illinois")
+    ),
+    (
+        (SELECT city_id FROM city WHERE city_name = "Schuamburg"),
+        '1299',
+        'Zurich Way ZAIC',
+        100,
+        (SELECT zip_code_id FROM city WHERE zip_code = "60196"),
+        (SELECT state_id FROM state WHERE state_name = "Illinois")
     );
-    
-    
-    
-    
+
+
+
 INSERT INTO insurance_company (company_name, address_id) VALUES
-    (
-        "Liberty Mutual",
-        (SELECT address_id FROM address WHERE street_num = "175"
-        AND street_name = "Berkeley Street" 
-        AND unit_num = "200")
-    ),
-    (
-        "CNA Insurance",
-        (SELECT address_id FROM address WHERE street_num = "130"
-        AND street_name = "Inverness Plaza" 
-        AND unit_num = "273")
-    ),
-    (
-        "Zurich North America",
-        (SELECT address_id FROM address WHERE street_num = "1299"
-        AND street_name = "Zurich Way ZAIC"
-        AND unit_num = "100")
-    );
+    ("Liberty Mutual",		(SELECT address_id FROM address WHERE street_num = "175" 	AND street_name = "Berkeley Street"	AND unit_num = "200")),
+    ("CNA Insurance",   	(SELECT address_id FROM address WHERE street_num = "130" 	AND street_name = "Inverness Plaza" AND unit_num = "273")),
+    ("Zurich North America",(SELECT address_id FROM address WHERE street_num = "1299" 	AND street_name = "Zurich Way ZAIC" AND unit_num = "100"));
+
+
+
 INSERT INTO insurance_type(type_name) VALUES
     ("General Liability"),("Workers Liability"),("Property Insurance");
-    
+
+
+
 INSERT INTO subcontractor(name) VALUES
     ('Fazbear Construction'),('Diamond Planks'),("Joe's construction"),("Jim's construction");
-    
+
+
+
 INSERT INTO insurance (exp_date, subcontractor_id, insurance_company_id, insurance_type_id) VALUES
     (
-		'2020-1-20',
+        '2020-1-20',
         (SELECT subcontractor_id FROM subcontractor s WHERE s.name = 'Fazbear Construction'),
         (SELECT company_name FROM insurance_company ic WHERE ic.company_name = 'CNA Insurance'),
         (SELECT type_name FROM insurance_type i WHERE i.type_name = 'General Liability')
     ),
     (
-		'2024-12-20',
+        '2024-12-20',
         (SELECT subcontractor_id FROM subcontractor s WHERE s.name = 'Diamond Planks'),
         (SELECT company_name FROM insurance_company ic WHERE ic.company_name = 'Zurich North America'),
         (SELECT type_name FROM insurance_type i WHERE i.type_name = 'Property Insurance')
     ),
     (
-		'2026-1-1',
+        '2026-1-1',
         (SELECT subcontractor_id FROM subcontractor s WHERE s.name = "Joe's construction"),
         (SELECT company_name FROM insurance_company ic WHERE ic.company_name = 'Liberty Mutual'),
         (SELECT type_name FROM insurance_type i WHERE i.type_name = 'Workers Liability')
     ),
     (
-		'2025-8-5',
+        '2025-8-5',
         (SELECT subcontractor_id FROM subcontractor s WHERE s.name = "Jim's construction"),
         (SELECT company_name FROM insurance_company ic WHERE ic.company_name = 'Liberty Mutual'),
         (SELECT type_name FROM insurance_type i WHERE i.type_name = 'General Liability')
     );
-    INSERT INTO project(project_name, address_id, start_date, end_date)
-    VALUES ("Smith Residence",(SELECT address_id FROM address WHERE street_num = "250" AND street_name = "1st Street"AND unit_num = "500"),"2024-01-01","2024-05-02"),
-    ("Community Golf Course",(SELECT address_id FROM address WHERE street_num = "500" AND street_name = "10th Street"AND unit_num = "600"),"2024-05-05","2024-07-10"),
-    ("Smith Residence",(SELECT address_id FROM address WHERE street_num = "300" AND street_name = "15th Street"AND unit_num = "800"),"2024-02-02","2024-04-20");
+
+
+
+INSERT INTO project(project_name, address_id, start_date, end_date) VALUES
+    ("Smith Residence",      	(SELECT address_id FROM address WHERE street_num = "250" AND street_name = "1st Street"		AND unit_num = "500"),	"2024-01-01",	"2024-05-02"),
+    ("Community Golf Course",	(SELECT address_id FROM address WHERE street_num = "500" AND street_name = "10th Street"	AND unit_num = "600"),	"2024-05-05",	"2024-07-10"),
+    ("Smith Residence",      	(SELECT address_id FROM address WHERE street_num = "300" AND street_name = "15th Street"	AND unit_num = "800"),	"2024-02-02",	"2024-04-20");
