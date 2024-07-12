@@ -11,6 +11,7 @@
 <body>
     <div class="form-toggles">
         <h1>Form Sections</h1>
+        <p><em>Tap the form labels and legends to see information about the database form table mapping</em></p>
         <ul>
             <li><button id="contractor-btn">Contractor</button></li>
             <li><button id="insurance-btn">Insurance</button></li>
@@ -124,6 +125,8 @@
                 <input type="text" name="unit-name" id="unit-name" maxlength="45">
                 <label for="unit-cost" data-table="template" data-column="unit_cost">Unit Cost:</label>
                 <input name="unit-cost" id="unit-cost" type="number" step="0.01" min="0" placeholder="0.00" />
+                <label for="unit-name" data-table="template" data-column="description">Description:</label>
+                <textarea name="unit-name" id="unit-name" maxlength="45"></textarea>
             </fieldset>
 
             <input type="submit" value="Submit">
@@ -134,8 +137,13 @@
         <h2>Project Task Forms</h2>
         <form>
             <fieldset>
-                <legend>Task</legend>
-                <!-- task type needs pulled out to a second table or deleted? or is it task name? -->
+                <legend data-table="task">Task</legend>
+                <label for="task-name" data-table="task" data-column="task_name">Task Name</label>
+                <input type="text" name="task-name" id="task-name" maxlength="45">
+                <label for="template-id" data-table="task" data-foreign="template_id">Template Name</label>
+                <input type="text" name="template-id" id="template-id" maxlength="45">
+                <label for="project-id" data-table="task" data-foreign="project_id">Project Name:</label>
+                <input type="text" name="project-id" id="project-id" maxlength="45">
             </fieldset>
 
             <input type="submit" value="Submit">
@@ -143,7 +151,7 @@
     </section>
 
     <section id="contractor-task-section" hidden>
-        <h2>Project Task Forms</h2>
+        <h2>Contractor Task Forms</h2>
         <form>
             <fieldset>
                 <legend data-table="subcontractor_task">Task</legend>
