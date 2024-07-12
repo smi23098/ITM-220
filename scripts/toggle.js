@@ -3,7 +3,8 @@
     document.getElementById("insurance-btn").addEventListener('click', () => toggleSections("insurance-section"));
     document.getElementById("project-btn").addEventListener('click', () => toggleSections("project-section"));
     document.getElementById("contractor-insurance-btn").addEventListener('click', () => toggleSections("contractor-insurance-section"));
-    document.getElementById("contractor-project-btn").addEventListener('click', () => toggleSections("contractor-project-section"));
+    document.getElementById("project-task-btn").addEventListener('click', () => toggleSections("project-task-section"));
+    document.getElementById("project-template-btn").addEventListener('click', () => toggleSections("project-template-section"));
 })();
 
 function toggleSections(sectionId) {

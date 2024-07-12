@@ -13,10 +13,11 @@
         <h1>Form Sections</h1>
         <ul>
             <li><button id="contractor-btn">Contractor</button></li>
-            <li><button id="project-btn">Project</button></li>
             <li><button id="insurance-btn">Insurance</button></li>
-            <li><button id="contractor-project-btn">Contractor Project</button></li>
             <li><button id="contractor-insurance-btn">Contractor Insurance</button></li>
+            <li><button id="project-btn">Project</button></li>
+            <li><button id="project-task-btn">Project Task</button></li>
+            <li><button id="project-template-btn">Project Template</button></li>
         </ul>
     </div>
     <section id="contractor-section" hidden>
@@ -41,12 +42,16 @@
         <h2>Project Forms</h2>
         <form>
             <fieldset>
-                <legend>Project Information</legend>
-
+                <legend data-table="project">Project Information</legend>
+                <label for="project-name" data-table="project" data-column="project_name">Project Name: </label>
+                <input type="text" name="project-name" id="project-name">
+                <label for="project-start" data-table="project" data-column="start_date">Start Date:</label>
+                <input type="date" name="project-start" id="project-start" required>
+                <label for="project-end" data-table="project" data-column="end_date">End Date:</label>
+                <input type="date" name="aprojectend" id="project-end" required>
             </fieldset>
             <fieldset class="address-fieldset">
                 <legend data-table="project" data-foreign="address_id">Address</legend>
-
             </fieldset>
             <input type="submit" value="Submit">
         </form>
@@ -64,17 +69,6 @@
                 <legend data-table="insurance_company" data-foreign="address_id">Address</legend>
                 
             </fieldset>
-            <input type="submit" value="Submit">
-        </form>
-    </section>
-
-    <section id="contractor-project-section" hidden>
-        <h2>Subcontractor Project Forms</h2>
-        <form>
-            <fieldset>
-
-            </fieldset>
-
             <input type="submit" value="Submit">
         </form>
     </section>
@@ -120,6 +114,27 @@
         </form>
     </section>
 
+    <section id="project-template-section" hidden>
+        <h2>Project Template Forms</h2>
+        <form>
+            <fieldset>
+
+            </fieldset>
+
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+
+    <section id="project-task-section" hidden>
+        <h2>Project Task Forms</h2>
+        <form>
+            <fieldset>
+
+            </fieldset>
+
+            <input type="submit" value="Submit">
+        </form>
+    </section>
     
     <div id="mysql-info">
         <!-- This div will be loaded dynamically with a table -->
