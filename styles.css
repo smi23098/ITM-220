@@ -1,10 +1,15 @@
 ul {
     padding: 0;
-    display: flex;
-    overflow: scroll;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
+
 li {
     list-style-type: none;
+}
+
+button {
+    width: 100%;
 }
 
 label {
@@ -30,6 +35,9 @@ th, td {
         display: inline;
         text-align: right;
         margin-top: 0;       
+    }
+    ul {
+        display: flex;
     }
 }
 
