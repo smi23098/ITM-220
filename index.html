@@ -18,6 +18,7 @@
             <li><button id="project-btn">Project</button></li>
             <li><button id="project-task-btn">Project Task</button></li>
             <li><button id="project-template-btn">Project Template</button></li>
+            <li><button id="contractor-task-btn">Contractor Task</button></li>
         </ul>
     </div>
     <section id="contractor-section" hidden>
@@ -134,9 +135,27 @@
         <form>
             <fieldset>
                 <legend>Task</legend>
-                <!-- task type needs pulled out to a second table or deleted? -->
+                <!-- task type needs pulled out to a second table or deleted? or is it task name? -->
             </fieldset>
 
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+
+    <section id="contractor-task-section" hidden>
+        <h2>Project Task Forms</h2>
+        <form>
+            <fieldset>
+                <legend data-table="subcontractor_task">Task</legend>
+                <label for="task-name-fk" data-table="subcontractor_task" data-foreign="task_id">Task Name: </label>
+                <input type="text" name="task-name-fk" id="task-name-fk" maxlength="45">
+                <label for="contractor-name-fk" data-table="subcontractor_task" data-foreign="subcontractor_id">Contractor Name: </label>
+                <input type="text" name="contractor-name-fk" id="contractor-name-fk" maxlength="45">
+                <label for="contract-cost" data-table="subcontractor_task" data-column="contract_cost">Contract Cost:</label>
+                <input name="contract-cost" id="contract-cost" type="number" step="0.01" min="0" placeholder="0.00" />
+                <label for="estimated-cost" data-table="subcontractor_task" data-column="estimated_cost">Estimated Cost:</label>
+                <input name="estimated-cost" id="estimated-cost" type="number" step="0.01" min="0" placeholder="0.00" />
+            </fieldset>
             <input type="submit" value="Submit">
         </form>
     </section>
