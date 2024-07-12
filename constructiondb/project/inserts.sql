@@ -253,3 +253,48 @@ INSERT INTO project(project_name, address_id, start_date, end_date) VALUES
     ("Smith Residence",      	(SELECT address_id FROM address WHERE street_num = "250" AND street_name = "1st Street"		AND unit_num = "500"),	"2024-01-01",	"2024-05-02"),
     ("Community Golf Course",	(SELECT address_id FROM address WHERE street_num = "500" AND street_name = "10th Street"	AND unit_num = "600"),	"2024-05-05",	"2024-07-10"),
     ("Smith Residence",      	(SELECT address_id FROM address WHERE street_num = "300" AND street_name = "15th Street"	AND unit_num = "800"),	"2024-02-02",	"2024-04-20");
+
+
+
+INSERT INTO template(unit_cost, unit_name, description, start_date, end_date) VALUES
+	(85.53, "3x7 door", "Three by seven foot door using red wood and a steel doorknob", DATE("2024-1-23"), DATE("2024-1-25")),
+    (381.32, "12x9 wall", "12x9 steel and red wood wall", DATE("2024-1-26"), DATE("2024-1-29"));
+
+
+
+INSERT INTO task(task_type, template_id, project_id) VALUES
+	("Smith residence front door",					(SELECT template_id FROM template WHERE unit_name = "3x7 door"),	(SELECT project_id FROM project)),
+    ("Smith residence north entrance north wall",	(SELECT template_id FROM template WHERE unit_name = "12x9 wall"),	(SELECT project_id FROM project));
+
+
+
+INSERT INTO subcontractor_task(subcontractor_id, task_id, contract_cost, estimated_cost) VALUES
+	(
+		(SELECT subcontractor_id FROM subcontractor WHERE name = "Fazbear Construction"),
+        (SELECT task_id FROM task WHERE task_type = "Smith residence front door"),
+        250.23,
+        330.12
+    ),
+    (
+		(SELECT subcontractor_id FROM subcontractor WHERE name = "Jim's construction"),
+        (SELECT task_id FROM task WHERE task_type = "Smith residence north entrance north wall"),
+        4809.89,
+        5032.40
+    ),
+    (
+		(SELECT subcontractor_id FROM subcontractor WHERE name = "Joe's construction"),
+        (SELECT task_id FROM task WHERE task_type = "Smith residence north entrance north wall"),
+        3800.00,
+        6212.13
+    );
+
+
+-- need more addresses for this table to use.
+-- INSERT INTO subcontractor_address(subcontractor_id, address_id, addr_start, addr_end) VALUES
+-- 	(
+-- 		(SELECT subcontractor_id FROM subcontractor WHERE name = "Joe's construction"),
+--     ),
+--     (
+-- 		...
+--     );
+	
