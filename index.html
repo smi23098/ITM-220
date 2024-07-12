@@ -55,10 +55,40 @@
         <h2>Insurance Forms</h2>
         <form>
             <fieldset>
-                <legend>Insurance Information</legend>
-                <label for="insurance-company">Insurance Company: </label>
+                <legend data-table="insurance_company">Insurance Information</legend>
+                <label for="insurance-company" data-table="insurance_company" data-column="company_name">Insurance Company: </label>
                 <input type="text" name="insurance-company" id="insurance-company">
-                <label for="insurance-type">Insurance Type: </label>
+                
+            </fieldset>
+            <fieldset class="address-fieldset">
+                <legend data-table="insurance_company" data-foreign="address_id">Address</legend>
+                
+            </fieldset>
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+
+    <section id="contractor-project-section" hidden>
+        <h2>Subcontractor Project Forms</h2>
+        <form>
+            <fieldset>
+
+            </fieldset>
+
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+
+    <section id="contractor-insurance-section" hidden>
+        <h2>Subcontractor Insurance Forms</h2>
+        <form>
+            <fieldset>
+                <legend data-table="insurance" data-column="insurance_id">Subcontractor Insurance</legend>
+                <label for="contractor-name" data-table="insurance" data-foreign="subcontractor_id">Contractor Name: </label>
+                <input type="text" name="contractor-name" id="contractor-name">
+                <label for="insurance-company-name" data-table="insurance" data-foreign="insurance_company_id">Insurance Company</label>
+                <input type="text" name="insurance-company-name" id="insurance-company-name" maxlength="45">
+                <label for="insurance-type" data-table="insurance" data-column="insurance_type_id" data-foreign="insurance_type_id">Insurance Type: </label>
                 <input name="insurance-type" id="insurance-type" list="insurance-type-list" maxlength="45"></input>
                 <datalist id="insurance-type-list">
                     <option value="General Liability Insurance"></option>
@@ -82,34 +112,8 @@
                     <option value="Commercial Crime Insurance"></option>
                     <option value="Fidelity Bond/Employee Dishonesty Insurance"></option>
                 </datalist>
-                <label for="experation-date">Experation Date: </label>
+                <label for="experation-date" data-table="insurance" data-column="exp_date">Experation Date: </label>
                 <input type="date" name="experation-date" id="experation-date">
-                
-            </fieldset>
-            <fieldset class="address-fieldset">
-                <legend data-table="insurance_company" data-foreign="address_id">Address</legend>
-
-            </fieldset>
-            <input type="submit" value="Submit">
-        </form>
-    </section>
-
-    <section id="contractor-project-section" hidden>
-        <h2>Subcontractor Project Forms</h2>
-        <form>
-            <fieldset>
-
-            </fieldset>
-
-            <input type="submit" value="Submit">
-        </form>
-    </section>
-
-    <section id="contractor-insurance-section" hidden>
-        <h2>Subcontractor Insurance Forms</h2>
-        <form>
-            <fieldset>
-
             </fieldset>
 
             <input type="submit" value="Submit">
