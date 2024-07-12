@@ -176,18 +176,6 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
         '175',
         'Berkeley Street',
         200,
-<<<<<<< HEAD
-        (SELECT zip_code_id FROM zip_code WHERE zip_code = "83644"),
-        (SELECT state_id FROM state WHERE state_name = "Idaho")
-    ), 
-    (
-		(SELECT city_id FROM city WHERE city_name = "Salt Lake"),
-        '300',
-        'North Temple',
-        1230,
-        (SELECT zip_code_id FROM zip_code WHERE zip_code = "84044"),
-        (SELECT state_id FROM state WHERE state_name = "Utah")
-=======
         (SELECT zip_code_id FROM city WHERE zip_code = "02116"),
         (SELECT state_id FROM state WHERE state_name = "Massachusetts")
     ), 
@@ -198,71 +186,38 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
         273,
         (SELECT zip_code_id FROM city WHERE zip_code = "35242"),
         (SELECT state_id FROM state WHERE state_name = "Alabama")
->>>>>>> 61672053201ae78b2c3473b151dde21f99fefb75
-	),
-	(
-		(SELECT city_id FROM city WHERE city_name = "Schuamburg"),
-		'1299',
-		'Zurich Way ZAIC',
-		100,
-<<<<<<< HEAD
-		(SELECT zip_code_id FROM zip_code WHERE zip_code = "83440"),
-		(SELECT state_id FROM state WHERE state_name = "Idaho")
-    ),
-    (
-		(SELECT city_id FROM city WHERE city_name = "Logan"),
-		'250',
-		'1st Street',
-		500,
-		(SELECT zip_code_id FROM zip_code WHERE zip_code = "84321"),
-		(SELECT state_id FROM state WHERE state_name = "Utah")
-    ),
-    ( -- 
-		(SELECT city_id FROM city WHERE city_name = "Hilo"),
-		'500',
-		'10th Street',
-		600,
-		(SELECT zip_code_id FROM zip_code WHERE zip_code = "Hilo"),
-		(SELECT state_id FROM state WHERE state_name = "Hawaii")
-    ),
-    (
-		(SELECT city_id FROM city WHERE city_name = "Phoenix"),
-		'300',
-		'15th Street',
-		800,
-		(SELECT zip_code_id FROM zip_code WHERE zip_code = "85001"),
-		(SELECT state_id FROM state WHERE state_name = "Arizona")
-    )
-    ;
-=======
-		(SELECT zip_code_id FROM city WHERE zip_code = "60196"),
-		(SELECT state_id FROM state WHERE state_name = "Illinois")
+	  ),
+	  (
+		  (SELECT city_id FROM city WHERE city_name = "Schuamburg"),
+      '1299',
+      'Zurich Way ZAIC',
+      100,
+      (SELECT zip_code_id FROM city WHERE zip_code = "60196"),
+      (SELECT state_id FROM state WHERE state_name = "Illinois")
     );
->>>>>>> 61672053201ae78b2c3473b151dde21f99fefb75
     
     
     
     
 INSERT INTO insurance_company (company_name, address_id) VALUES
-	(
-		"Liberty Mutual",
-		(SELECT address_id FROM address WHERE street_num = "175"
-		AND street_name = "Berkeley Street" 
-		AND unit_num = "200")
-            
-	),
-	(
-		"CNA Insurance",
-		(SELECT address_id FROM address WHERE street_num = "130"
-		AND street_name = "Inverness Plaza" 
-		AND unit_num = "273")
-	),
-	(
-		"Zurich North America",
-		(SELECT address_id FROM address WHERE street_num = "1299"
-		AND street_name = "Zurich Way ZAIC"
-		AND unit_num = "100")
-	);
+    (
+        "Liberty Mutual",
+        (SELECT address_id FROM address WHERE street_num = "175"
+        AND street_name = "Berkeley Street" 
+        AND unit_num = "200")
+    ),
+    (
+        "CNA Insurance",
+        (SELECT address_id FROM address WHERE street_num = "130"
+        AND street_name = "Inverness Plaza" 
+        AND unit_num = "273")
+    ),
+    (
+        "Zurich North America",
+        (SELECT address_id FROM address WHERE street_num = "1299"
+        AND street_name = "Zurich Way ZAIC"
+        AND unit_num = "100")
+    );
 INSERT INTO insurance_type(type_name) VALUES
     ("General Liability"),("Workers Liability"),("Property Insurance");
     
