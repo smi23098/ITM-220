@@ -2,7 +2,14 @@ USE constructiondb;
 
 -- address
 
--- state
+-- state (correct the spelling of mississippi)
+
+UPDATE state AS s1
+JOIN (
+    SELECT state_id FROM state WHERE state_name = 'Misissippi'
+) AS s2
+ON s1.state_id = s2.state_id
+SET s1.state_name = 'Mississippi';
 
 -- city
 
@@ -42,5 +49,3 @@ WHERE subcontractor_id = (
 		AND city_name = "Madison"
         AND state_name = "Wisconsin"
 );
-
-SELECT * FROM subcontractor_address;

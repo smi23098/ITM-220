@@ -28,7 +28,7 @@ INSERT INTO state (state_name, state_code) VALUES
     ("Massachusetts", "MA"),
     ("Michigan", "MI"),
     ("Minnesota", "MN"),
-    ("Mississippi", "MS"),
+    ("Misissippi", "MS"),
     ("Missouri", "MO"),
     ("Montana", "MT"),
     ("Nebraska", "NE"),
