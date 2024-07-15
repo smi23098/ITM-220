@@ -1,6 +1,8 @@
 USE constructiondb;
 
--- Outer Tables
+-- ----------------------------------------
+-- Address Tables
+-- ----------------------------------------
 
 INSERT INTO state (state_name, state_code) VALUES
     ("Alabama", "AL"),
@@ -182,7 +184,7 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
         '175',
         'Berkeley Street',
         '200',
-        (SELECT zip_code_id FROM city WHERE zip_code = "02116"),
+        (SELECT zip_code_id FROM zip_code WHERE zip_code = "02116"),
         (SELECT state_id FROM state WHERE state_name = "Massachusetts")
     ), 
     (
@@ -190,7 +192,7 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
         '130',
         'Inverness Plaza',
         '273',
-        (SELECT zip_code_id FROM city WHERE zip_code = "35242"),
+        (SELECT zip_code_id FROM zip_code WHERE zip_code = "35242"),
         (SELECT state_id FROM state WHERE state_name = "Alabama")
     ),
     (
@@ -198,7 +200,7 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
         '1299',
         'Zurich Way ZAIC',
         '100',
-        (SELECT zip_code_id FROM city WHERE zip_code = "60196"),
+        (SELECT zip_code_id FROM zip_code WHERE zip_code = "60196"),
         (SELECT state_id FROM state WHERE state_name = "Illinois")
     ),
     (
@@ -206,7 +208,7 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
         '12357',
         '10th Avenue',
         '546',
-        (SELECT zip_code_id FROM city WHERE zip_code = "97301"),
+        (SELECT zip_code_id FROM zip_code WHERE zip_code = "97301"),
         (SELECT state_id FROM state WHERE state_name = "Oregon")
     ),
     (
@@ -214,7 +216,7 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
         '6798',
         '3rd Street',
         '78',
-        (SELECT zip_code_id FROM city WHERE zip_code = "82001"),
+        (SELECT zip_code_id FROM zip_code WHERE zip_code = "82001"),
         (SELECT state_id FROM state WHERE state_name = "Wyoming")
     ),
     (
@@ -222,7 +224,7 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
         '780',
         '10th Street',
         '23',
-        (SELECT zip_code_id FROM city WHERE zip_code = "73101"),
+        (SELECT zip_code_id FROM zip_code WHERE zip_code = "73101"),
         (SELECT state_id FROM state WHERE state_name = "Oklahoma")
     ),
     (
@@ -230,7 +232,7 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
         '345',
         'Insurance Ave',
         '12378',
-        (SELECT zip_code_id FROM city WHERE zip_code = "03301"),
+        (SELECT zip_code_id FROM zip_code WHERE zip_code = "03301"),
         (SELECT state_id FROM state WHERE state_name = "North Carolina")
     ),
     (
@@ -238,7 +240,7 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
         '980',
         'Construction Way',
         '56',
-        (SELECT zip_code_id FROM city WHERE zip_code = "53701"),
+        (SELECT zip_code_id FROM zip_code WHERE zip_code = "53701"),
         (SELECT state_id FROM state WHERE state_name = "Wisconsin")
     ),
     (
@@ -246,7 +248,7 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
         '167',
         'Build Street',
         '45',
-        (SELECT zip_code_id FROM city WHERE zip_code = "25301"),
+        (SELECT zip_code_id FROM zip_code WHERE zip_code = "25301"),
         (SELECT state_id FROM state WHERE state_name = "West Virginia")
     ),
     (
@@ -254,68 +256,139 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
         '897',
         'Money Way',
         '56',
-        (SELECT zip_code_id FROM city WHERE zip_code = "78701"),
+        (SELECT zip_code_id FROM zip_code WHERE zip_code = "78701"),
         (SELECT state_id FROM state WHERE state_name = "Texas")
     );
 
 
+-- ----------------------------------------
+-- Subcontractor & Insurance Tables
+-- ----------------------------------------
+
+
 
 INSERT INTO insurance_company (company_name, address_id) VALUES
-    ("Liberty Mutual",		(SELECT address_id FROM address WHERE street_num = "175" 	AND street_name = "Berkeley Street"	AND unit_num = "200")),
-    ("CNA Insurance",   	(SELECT address_id FROM address WHERE street_num = "130" 	AND street_name = "Inverness Plaza" AND unit_num = "273")),
-    ("Zurich North America",(SELECT address_id FROM address WHERE street_num = "1299" 	AND street_name = "Zurich Way ZAIC" AND unit_num = "100"));
+    (
+        "Liberty Mutual",		
+        (SELECT address_id FROM address WHERE street_num = "175" 	AND street_name = "Berkeley Street"	AND unit_num = "200")
+    ),
+    (
+        "CNA Insurance",   	
+        (SELECT address_id FROM address WHERE street_num = "130" 	AND street_name = "Inverness Plaza" AND unit_num = "273")
+    ),
+    (
+        "Zurich North America",
+        (SELECT address_id FROM address WHERE street_num = "1299" 	AND street_name = "Zurich Way ZAIC" AND unit_num = "100")
+    );
+
 
 
 
 INSERT INTO insurance_type(type_name) VALUES
-    ("General Liability"),("Workers Liability"),("Property Insurance");
+    ("General Liability"),
+    ("Workers Liability"),
+    ("Property Insurance");
 
 
 
-INSERT INTO subcontractor(name) VALUES
-    ('Fazbear Construction'),('Diamond Planks'),("Joe's construction"),("Jim's construction");
+INSERT INTO subcontractor(subcontractor_name) VALUES
+    ('Fazbear Construction'),
+    ('Diamond Planks'),
+    ("Joe's construction"),
+    ("Jim's construction");
 
 
 
 INSERT INTO insurance (exp_date, subcontractor_id, insurance_company_id, insurance_type_id) VALUES
     (
         '2020-1-20',
-        (SELECT subcontractor_id FROM subcontractor s WHERE s.name = 'Fazbear Construction'),
-        (SELECT company_name FROM insurance_company ic WHERE ic.company_name = 'CNA Insurance'),
-        (SELECT type_name FROM insurance_type i WHERE i.type_name = 'General Liability')
+        (SELECT subcontractor_id FROM subcontractor s WHERE s.subcontractor_name = 'Fazbear Construction'),
+        (SELECT insurance_company_id FROM insurance_company ic WHERE ic.company_name = 'CNA Insurance'),
+        (SELECT insurance_type_id FROM insurance_type i WHERE i.type_name = 'General Liability')
     ),
     (
         '2024-12-20',
-        (SELECT subcontractor_id FROM subcontractor s WHERE s.name = 'Diamond Planks'),
-        (SELECT company_name FROM insurance_company ic WHERE ic.company_name = 'Zurich North America'),
-        (SELECT type_name FROM insurance_type i WHERE i.type_name = 'Property Insurance')
+        (SELECT subcontractor_id FROM subcontractor s WHERE s.subcontractor_name = 'Diamond Planks'),
+        (SELECT insurance_company_id FROM insurance_company ic WHERE ic.company_name = 'Zurich North America'),
+        (SELECT insurance_type_id FROM insurance_type i WHERE i.type_name = 'Property Insurance')
     ),
     (
         '2026-1-1',
-        (SELECT subcontractor_id FROM subcontractor s WHERE s.name = "Joe's construction"),
-        (SELECT company_name FROM insurance_company ic WHERE ic.company_name = 'Liberty Mutual'),
-        (SELECT type_name FROM insurance_type i WHERE i.type_name = 'Workers Liability')
+        (SELECT subcontractor_id FROM subcontractor s WHERE s.subcontractor_name = "Joe's construction"),
+        (SELECT insurance_company_id FROM insurance_company ic WHERE ic.company_name = 'Liberty Mutual'),
+        (SELECT insurance_type_id FROM insurance_type i WHERE i.type_name = 'Workers Liability')
     ),
     (
         '2025-8-5',
-        (SELECT subcontractor_id FROM subcontractor s WHERE s.name = "Jim's construction"),
-        (SELECT company_name FROM insurance_company ic WHERE ic.company_name = 'Liberty Mutual'),
-        (SELECT type_name FROM insurance_type i WHERE i.type_name = 'General Liability')
+        (SELECT subcontractor_id FROM subcontractor s WHERE s.subcontractor_name = "Jim's construction"),
+        (SELECT insurance_company_id FROM insurance_company ic WHERE ic.company_name = 'Liberty Mutual'),
+        (SELECT insurance_type_id FROM insurance_type i WHERE i.type_name = 'General Liability')
+    );
+
+INSERT INTO subcontractor_address(subcontractor_id, address_id, addr_start, addr_end) VALUES
+ 	(
+ 		(SELECT subcontractor_id FROM subcontractor WHERE subcontractor_name = "Joe's construction"),
+        (SELECT address_id FROM address WHERE street_num = "897" 	AND street_name = "Money Way"	AND unit_num = "56"),
+        '2023-9-21',
+        null
+    ),
+ 	(
+ 		(SELECT subcontractor_id FROM subcontractor WHERE subcontractor_name = "Jim's construction"),
+        (SELECT address_id FROM address WHERE street_num = "980" 	AND street_name = "Construction Way"	AND unit_num = "56"),
+        '2019-3-5',
+        null
+    ),
+    (
+        (SELECT subcontractor_id FROM subcontractor WHERE subcontractor_name = "Diamond Planks"),
+        (SELECT address_id FROM address WHERE street_num = "167" 	AND street_name = "Build Street"	AND unit_num = "45"),
+        '2015-1-3',
+        '2021-4-29'
     );
 
 
 
+-- ----------------------------------------
+-- Project Tables
+-- ----------------------------------------
+
 INSERT INTO project(project_name, address_id, start_date, end_date) VALUES
-    ("Smith Residence",      	(SELECT address_id FROM address WHERE street_num = "250" AND street_name = "1st Street"		AND unit_num = "500"),	"2024-01-01",	"2024-05-02"),
-    ("Community Golf Course",	(SELECT address_id FROM address WHERE street_num = "500" AND street_name = "10th Street"	AND unit_num = "600"),	"2024-05-05",	"2024-07-10"),
-    ("Smith Residence",      	(SELECT address_id FROM address WHERE street_num = "300" AND street_name = "15th Street"	AND unit_num = "800"),	"2024-02-02",	"2024-04-20");
+    (
+        "Smith Residence",      	
+        (SELECT address_id FROM address WHERE street_num = "12357" AND street_name = "10th Avenue"	AND unit_num = "546"),	
+        "2024-01-01",	
+        "2024-05-02"
+    ),
+    (
+        "Community Golf Course",	
+        (SELECT address_id FROM address WHERE street_num = "780" AND street_name = "10th Street"	AND unit_num = "23"),	
+        "2024-05-05",	
+        "2024-07-10"
+    ),
+    (
+        "Smith Residence",      	
+        (SELECT address_id FROM address WHERE street_num = "6798" AND street_name = "3rd Street"	AND unit_num = "78"),	
+        "2024-02-02",	
+        "2024-04-20"
+    );
 
 
 
 INSERT INTO template(unit_cost, unit_name, description) VALUES
-	(85.53, "3x7 door", "Three by seven foot door using red wood and a steel doorknob"),
-    (381.32, "12x9 wall", "12x9 steel and red wood wall"),
-    (200.12, "13x13 roof", "13x3 steel and rubber roof");
+	(
+        85.53, 
+        "3x7 door", 
+        "3 by 7 ft red wood door with steel doorknob"
+    ),
+    (
+        381.32, 
+        "12x9 wall", 
+        "12x9 steel and red wood wall"
+    ),
+    (
+        200.12, 
+        "13x13 roof", 
+        "13x3 steel and rubber roof"
+    );
 
 
 
@@ -340,31 +413,22 @@ INSERT INTO task(task_name, template_id, project_id) VALUES
 
 INSERT INTO subcontractor_task(subcontractor_id, task_id, contract_cost, estimated_cost) VALUES
 	(
-		(SELECT subcontractor_id FROM subcontractor WHERE name = "Fazbear Construction"),
+		(SELECT subcontractor_id FROM subcontractor WHERE subcontractor_name = "Fazbear Construction"),
         (SELECT task_id FROM task WHERE task_name = "Smith residence front door"),
         250.23,
         330.12
     ),
     (
-		(SELECT subcontractor_id FROM subcontractor WHERE name = "Jim's construction"),
+		(SELECT subcontractor_id FROM subcontractor WHERE subcontractor_name = "Jim's construction"),
         (SELECT task_id FROM task WHERE task_name = "Smith residence north entrance north wall"),
         4809.89,
         5032.40
     ),
     (
-		(SELECT subcontractor_id FROM subcontractor WHERE name = "Joe's construction"),
+		(SELECT subcontractor_id FROM subcontractor WHERE subcontractor_name = "Joe's construction"),
         (SELECT task_id FROM task WHERE task_name = "Smith residence north entrance north wall"),
         3800.00,
         6212.13
     );
 
-
--- need more addresses for this table to use.
--- INSERT INTO subcontractor_address(subcontractor_id, address_id, addr_start, addr_end) VALUES
--- 	(
--- 		(SELECT subcontractor_id FROM subcontractor WHERE name = "Joe's construction"),
---     ),
---     (
--- 		...
---     );
 	
