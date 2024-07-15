@@ -181,7 +181,7 @@ INSERT INTO zip_code (zip_code) VALUES
 INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, state_id) VALUES
     (
         (SELECT city_id FROM city WHERE city_name = "Boston"),
-        '175',
+        175,
         'Berkeley Street',
         '200',
         (SELECT zip_code_id FROM zip_code WHERE zip_code = "02116"),
@@ -189,7 +189,7 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
     ), 
     (
         (SELECT city_id FROM city WHERE city_name = "Birmingham"),
-        '130',
+        130,
         'Inverness Plaza',
         '273',
         (SELECT zip_code_id FROM zip_code WHERE zip_code = "35242"),
@@ -197,7 +197,7 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
     ),
     (
         (SELECT city_id FROM city WHERE city_name = "Schuamburg"),
-        '1299',
+        1299,
         'Zurich Way ZAIC',
         '100',
         (SELECT zip_code_id FROM zip_code WHERE zip_code = "60196"),
@@ -205,7 +205,7 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
     ),
     (
         (SELECT city_id FROM city WHERE city_name = "Salem"),
-        '12357',
+        12357,
         '10th Avenue',
         '546',
         (SELECT zip_code_id FROM zip_code WHERE zip_code = "97301"),
@@ -213,7 +213,7 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
     ),
     (
         (SELECT city_id FROM city WHERE city_name = "Cheyenne"),
-        '6798',
+        6798,
         '3rd Street',
         '78',
         (SELECT zip_code_id FROM zip_code WHERE zip_code = "82001"),
@@ -221,7 +221,7 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
     ),
     (
         (SELECT city_id FROM city WHERE city_name = "Oklahoma City"),
-        '780',
+        780,
         '10th Street',
         '23',
         (SELECT zip_code_id FROM zip_code WHERE zip_code = "73101"),
@@ -229,7 +229,7 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
     ),
     (
         (SELECT city_id FROM city WHERE city_name = "Concord"),
-        '345',
+        345,
         'Insurance Ave',
         '12378',
         (SELECT zip_code_id FROM zip_code WHERE zip_code = "03301"),
@@ -237,7 +237,7 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
     ),
     (
         (SELECT city_id FROM city WHERE city_name = "Madison"),
-        '980',
+        980,
         'Construction Way',
         '56',
         (SELECT zip_code_id FROM zip_code WHERE zip_code = "53701"),
@@ -245,7 +245,7 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
     ),
     (
         (SELECT city_id FROM city WHERE city_name = "Charleston"),
-        '167',
+        167,
         'Build Street',
         '45',
         (SELECT zip_code_id FROM zip_code WHERE zip_code = "25301"),
@@ -253,7 +253,7 @@ INSERT INTO address (city_id, street_num, street_name, unit_num, zip_code_id, st
     ),
     (
         (SELECT city_id FROM city WHERE city_name = "Austin"),
-        '897',
+        897,
         'Money Way',
         '56',
         (SELECT zip_code_id FROM zip_code WHERE zip_code = "78701"),
