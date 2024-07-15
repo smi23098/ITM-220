@@ -1,6 +1,13 @@
 -- Delete for state table
-DELETE FROM state
-WHERE state_name IN ('Alabama', 'Alaska', 'Arizona');
+DELETE state
+FROM state WHERE
+JOIN (
+    SELECT state_id
+    FROM state
+    WHERE state_name IN ('Alabama', 'Arizona', 'Arkansas')
+) AS states_to_delete ON state.state_id = states_to_delete.state_id;
+
+
 
 -- Delete for city table
 DELETE FROM city
