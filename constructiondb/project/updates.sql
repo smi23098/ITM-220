@@ -19,7 +19,23 @@ SET s1.state_name = 'Mississippi';
 
 -- insurance
 
--- insurance company
+-- insurance company (name change)
+-- SELECT company_name,street_num, street_name FROM insurance_company  AS i JOIN address AS a ON a.address_id = i.address_id;
+
+UPDATE insurance_company AS ic1
+JOIN (
+	SELECT insurance_company_id FROM insurance_company 
+	WHERE company_name = "Liberty Mutual" 
+	AND address_id = (
+		SELECT address_id FROM address AS a
+		JOIN zip_code AS z ON a.zip_code_id = z.zip_code_id
+		WHERE z.zip_code = "02116" 
+		AND a.street_name = "Berkeley Street"
+		AND a.street_num = 175
+	)  
+) AS ic2
+ON ic1.insurance_company_id = ic2.insurance_company_id
+SET company_name = "New Day Insurance";
 
 -- insurance type
 
