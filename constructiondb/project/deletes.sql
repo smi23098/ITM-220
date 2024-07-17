@@ -1,21 +1,31 @@
+USE constructiondb;
+
 -- Delete for state table
-DELETE state
-FROM state WHERE
+DELETE s1
+FROM state AS s1
 JOIN (
     SELECT state_id
     FROM state
-    WHERE state_name IN ('Alabama', 'Arizona', 'Arkansas')
-) AS states_to_delete ON state.state_id = states_to_delete.state_id;
-
-
+    WHERE state_name IN ('Arizona', 'Arkansas', 'Rhode Island')
+) AS s2 ON s1.state_id = s2.state_id;
 
 -- Delete for city table
-DELETE FROM city
-WHERE city_name IN ('Birmingham', 'Schuamburg', 'Middleton', 'Boise', 'Rexburg');
+DELETE c1
+FROM city AS c1
+JOIN ( 
+	SELECT city_id 
+	FROM city 
+	WHERE city_name IN ('Jackson', 'Trenton','Santa Fe')
+) AS c2 ON c1.city_id = c2.city_id;
 
 -- Delete for zip code table
-DELETE FROM zip_code
-WHERE zip_code IN ('60196', '35242', '83644');
+DELETE z1 
+FROM zip_code AS z1
+JOIN (
+	SELECT zip_code_id
+    FROM zip_code 
+    WHERE zip_code IN ('12201', '96720', '83644')
+) AS z2 ON z1.zip_code_id = z2.zip_code_id;
 
 -- Delete for address table
 DELETE FROM address
@@ -127,26 +137,24 @@ WHERE EXISTS (
 );
 
 -- Delete for project
-DELETE FROM project
-WHERE EXISTS (
-    SELECT 1
-    FROM address a
-    WHERE 
+DELETE project
+FROM project
+JOIN address a ON project.address_id = a.address_id
+WHERE
+    (
         (project.project_name = "Smith Residence" AND
          a.street_num = "12357" AND a.street_name = "10th Avenue" AND a.unit_num = "546" AND
-         project.start_date = '2024-01-01' AND project.end_date = '2024-05-02' AND
-         project.address_id = a.address_id)
-    OR
+         project.start_date = '2024-01-01' AND project.end_date = '2024-05-02')
+        OR
         (project.project_name = "Community Golf Course" AND
          a.street_num = "780" AND a.street_name = "10th Street" AND a.unit_num = "23" AND
-         project.start_date = '2024-05-05' AND project.end_date = '2024-07-10' AND
-         project.address_id = a.address_id)
-    OR
+         project.start_date = '2024-05-05' AND project.end_date = '2024-07-10')
+        OR
         (project.project_name = "Smith Residence" AND
          a.street_num = "6798" AND a.street_name = "3rd Street" AND a.unit_num = "78" AND
-         project.start_date = '2024-02-02' AND project.end_date = '2024-04-20' AND
-         project.address_id = a.address_id)
-);
+         project.start_date = '2024-02-02' AND project.end_date = '2024-04-20')
+    );
+
 
 -- Delete for template
 DELETE FROM template
