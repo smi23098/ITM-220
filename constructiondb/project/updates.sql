@@ -44,13 +44,3 @@ JOIN (
 ) AS ic2
 ON ic1.insurance_company_id = ic2.insurance_company_id
 SET company_name = "New Day Insurance";
-
--- Read Select Statement for Project
-
-SELECT subcontractor_name, contract_cost, task_name, project_name, city_name, street_name, street_num
-FROM subcontractor AS S
-JOIN subcontractor_task AS ST ON S.subcontractor_id = ST.subcontractor_id
-JOIN task AS T ON T.task_id = ST.task_id
-JOIN project AS P ON P.project_id = T.project_id
-JOIN address AS A ON A.address_id = P.address_id
-JOIN city AS C ON C.city_id = A.city_id;
